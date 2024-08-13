@@ -1,3 +1,4 @@
+pip install matplotlib.pyplot
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt  # Import pyplot submodule
