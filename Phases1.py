@@ -1,8 +1,6 @@
-
-
 import streamlit as st
 import pandas as pd
-import matplotlib as plt
+import matplotlib.pyplot as plt  # Import pyplot submodule
 import numpy as np
 import seaborn as sns
 
@@ -36,14 +34,11 @@ if uploaded_file is not None:
     variables = df.columns.tolist()
     x_var = st.selectbox("Select X variable", variables)
     y_var = st.selectbox("Select Y variable", variables)
-    
-    # Dropdown for selecting hue variable
-    hue_var = st.selectbox("Select Hue variable", variables)
 
     # Ensure that both x_var and y_var are defined before proceeding
     if x_var and y_var:
-        # Create the lmplot using seaborn
-        sns.lmplot(data=filtered_df, x=x_var, y=y_var, order=2, hue=hue_var)
+        # Create the lmplot using seaborn without the hue parameter
+        plot = sns.lmplot(data=filtered_df, x=x_var, y=y_var, order=2)
 
         # Display the plot using Streamlit
-        st.pyplot(plt)
+        st.pyplot(plot.fig)
